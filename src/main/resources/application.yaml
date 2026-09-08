@@ -1,0 +1,19 @@
+spring.application.name=XH_crawlerDemo
+
+# 由于本机开启代理，转发端口为10215,如果你本地没有代理，则设置false
+crawler.proxy.enabled=true          # 是否走代理
+crawler.proxy.host=127.0.0.1
+crawler.proxy.port=10215
+  
+# ---------- 数据库配置 ----------
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xinhua_crawler?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=123456
+  
+  # ---------- MyBatis 开启驼峰命名----------
+mybatis.configuration.map-underscore-to-camel-case=true
+  
+  # ---------- 备选hikari ----------
+spring.datasource.hikari.initialization-fail-timeout=-1
+
+server.port=8080
