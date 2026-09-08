@@ -1,4 +1,4 @@
-package com.demo.xh_crawlerdemo;
+package com.demo.crawler;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
