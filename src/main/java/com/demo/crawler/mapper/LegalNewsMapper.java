@@ -3,6 +3,7 @@ package com.demo.crawler.mapper;
 import com.demo.crawler.model.NewsItem;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * 新闻数据 Mapper（由于测试比较简单，可直接写在注解中）。
@@ -21,4 +22,8 @@ public interface LegalNewsMapper {
     @Insert("INSERT IGNORE INTO legal_news(doc_id, title, pub_time, link_url) "
             + "VALUES(#{docId}, #{title}, #{pubTime}, #{linkUrl})")
     int insertIgnore(NewsItem item);
+
+    /** 轻量连通性探测：数据库可达时返回 1（用于降级判断）。 */
+    @Select("SELECT 1")
+    int ping();
 }

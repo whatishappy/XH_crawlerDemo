@@ -179,6 +179,12 @@ public class XinhuaLegalCrawler implements PageProcessor, ApplicationRunner {
             spider.setDownloader(proxyDownloader);
         }
 
+        // 数据库可用性探测：连不上则降级为仅控制台/CSV 输出，不影响爬虫执行
+        boolean dbOk = dbPipeline.checkAvailable();
+        if (!dbOk) {
+            log.warn("数据库连接不可用，本次抓取仅输出控制台与 CSV，入库已跳过");
+        }
+
         spider.run();
         // 聚合结果以 CsvPipeline 为准（按 docId 去重）
 
